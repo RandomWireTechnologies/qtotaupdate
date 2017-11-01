@@ -587,7 +587,7 @@ get_kernel_info()
 
     # Extract kernel version from a filename.
     if [ -z "${KERNEL_VERSION}" ] ; then
-        KERNEL_VERSION=$(basename "${KERNEL}" | grep -o -E "[1-4]\.[0-9][0-9]*\.[0-9][0-9]*" || true)
+        KERNEL_VERSION=$(basename "${KERNEL}" | grep -o -E "[1-4]\.[0-9][0-9]*\.[0-9][0-9]*" | head -n1 || true)
         if [ -z "${KERNEL_VERSION}" ] ; then
             qt_ostree_warning "${KERNEL} filename does not contain kernel version. The kernel version can be
                                provided with the --kernel-version command line argument."
